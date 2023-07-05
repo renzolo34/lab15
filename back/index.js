@@ -12,6 +12,7 @@ app.use(express.json());
 app.use('/api',require('./routes/maquina.routes'));
 app.use('/api', require('./routes/planta.routes'));
 app.use('/api',require('./routes/tecnico.routes'));
+app.use('/api',require('./routes/opera.routes'));
 
 app.listen(config.port, ()=>{
     console.log("El servidor corriendo en el puerto 4000");
