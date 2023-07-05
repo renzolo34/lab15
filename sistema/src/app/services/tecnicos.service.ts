@@ -7,7 +7,7 @@ import { Tecnico } from '../models/tecnico';
   providedIn: 'root'
 })
 export class TecnicoService {
-  private apiUrl = 'http://localhost:3000/tecnicos'; // Cambia la URL según tu API
+  private apiUrl = 'http://localhost:4000/api/tecnicos'; // Cambia la URL según tu API
 
   constructor(private http: HttpClient) { }
 

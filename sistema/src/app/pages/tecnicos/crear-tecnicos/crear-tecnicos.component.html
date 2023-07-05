@@ -16,44 +16,51 @@
                     <div class="form-group">
                       <label>DNI</label>
                       <input type="text" formControlName="dni" class="form-control" placeholder="Ingresar DNI">
-                      <div class="text-danger"
-                           *ngIf="tecnicoForm.get('dni')?.hasError('required') && tecnicoForm.get('dni')?.touched">
+                      <div class="text-danger" *ngIf="tecnicoForm.get('dni')?.hasError('required') && tecnicoForm.get('dni')?.touched">
                         <span>El DNI <strong>es obligatorio</strong></span>
                       </div>
                     </div>
                     <div class="form-group">
                       <label>Nombre</label>
                       <input type="text" formControlName="nombre" class="form-control" placeholder="Ingresar Nombre">
-                      <div class="text-danger"
-                           *ngIf="tecnicoForm.get('nombre')?.hasError('required') && tecnicoForm.get('nombre')?.touched">
+                      <div class="text-danger" *ngIf="tecnicoForm.get('nombre')?.hasError('required') && tecnicoForm.get('nombre')?.touched">
                         <span>El nombre <strong>es obligatorio</strong></span>
                       </div>
                     </div>
                     <div class="form-group">
                       <label>Apellido</label>
                       <input type="text" formControlName="apellido" class="form-control" placeholder="Ingresar Apellido">
-                      <div class="text-danger"
-                           *ngIf="tecnicoForm.get('apellido')?.hasError('required') && tecnicoForm.get('apellido')?.touched">
+                      <div class="text-danger" *ngIf="tecnicoForm.get('apellido')?.hasError('required') && tecnicoForm.get('apellido')?.touched">
                         <span>El apellido <strong>es obligatorio</strong></span>
                       </div>
                     </div>
                     <div class="form-group">
                       <label>Fecha de Nacimiento</label>
                       <input type="date" formControlName="fechaNacimiento" class="form-control" placeholder="Ingresar Fecha de Nacimiento">
-                      <div class="text-danger"
-                           *ngIf="tecnicoForm.get('fechaNacimiento')?.hasError('required') && tecnicoForm.get('fechaNacimiento')?.touched">
+                      <div class="text-danger" *ngIf="tecnicoForm.get('fechaNacimiento')?.hasError('required') && tecnicoForm.get('fechaNacimiento')?.touched">
                         <span>La fecha de nacimiento <strong>es obligatoria</strong></span>
                       </div>
                     </div>
-                             
-                    <div class="col-sm-12 text-right">
-                        <div class="panel-body buttons-margin">
-                            <button type="submit" class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
-                            <button class="btn btn-w-md btn-warning" routerLink="/listar-tecnicos">Cancelar</button>
+                    <div formArrayName="telefonos">
+                      <div *ngFor="let telefono of getTelefonosControls().controls; let i = index">
+                        <div [formGroupName]="i">
+                          <div class="form-group">
+                            <label>Teléfono {{ i + 1 }}</label>
+                            <input type="text" formControlName="numero" class="form-control" placeholder="Ingresar número de teléfono">
                           </div>
-                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-danger" *ngIf="tecnicoForm.get('telefonos')?.hasError('required') && tecnicoForm.get('telefonos')?.touched">
+                      <span>Se requiere al menos un número de teléfono</span>
+                    </div>
+                    <div class="text-right">
+                      <button type="submit" class="btn btn-success">Guardar</button>
+                      <button class="btn btn-warning" routerLink="/listar-tecnicos">Cancelar</button>
                     </div>
                   </form>
+                  
+                  
                 </div>
               </div>
             </div>
@@ -63,4 +70,3 @@
     </div>
   </div>
 </section>
-
